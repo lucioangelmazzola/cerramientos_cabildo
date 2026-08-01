@@ -1,0 +1,324 @@
+/* ==========================================================================
+   Variables de Paleta Industrial: Negros, Grises y Rojo Carmesí
+   ========================================================================== */
+:root {
+    --bg-light: #f4eae1;       /* Fondo crema claro de los bordes */
+    --panel-dark: #433f3f;     /* Gris oscuro texturizado */
+    --card-brown: #665e5a;     /* Caja flotante intermedia */
+    --accent-orange: #d19a78;  /* Color de realce / Detalles */
+    --accent-color: #e62335;   /* Color de realce (Rojo Carmesí de alta visibilidad) */
+    --text-white: #ffffff;
+    --text-muted: #b5b5be;
+}
+
+/* Reset Estándar */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-light);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Contenedor Principal (Canvas del Folleto) */
+.page-container {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    width: 100%;
+    max-width: 1200px;
+    background-color: var(--panel-dark);
+    border: 15px solid var(--panel-dark);
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   BLOQUE IZQUIERDO: CONTENEDOR DE FOTO
+   ========================================================================== */
+.photo-section {
+    background-color: var(--panel-dark);
+    padding: 40px 20px 40px 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-wrapper {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    background-color: #222;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.95);
+}
+
+/* ==========================================================================
+   BLOQUE DERECHO: CONTENIDO E INFO GENERAL
+   ========================================================================== */
+.info-section {
+    background-color: var(--panel-dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 40px 40px 20px;
+    position: relative;
+}
+
+/* Líneas de Cuadrícula Arquitectónicas */
+.info-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 40px; width: 1px; height: 100%;
+    background-color: rgba(255,255,255,0.05);
+}
+.info-section::after {
+    content: '';
+    position: absolute;
+    top: 80px; left: 0; width: 100%; height: 1px;
+    background-color: rgba(255,255,255,0.05);
+}
+
+.top-bar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+}
+
+.logo-placeholder {
+    color: var(--text-white);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-box {
+    width: 15px;
+    height: 15px;
+    border: 2px solid var(--accent-color);
+    background-color: var(--accent-color);
+    display: inline-block;
+}
+
+.webinar-tag {
+    color: rgba(255, 255, 255, 0.833);
+    font-size: 1rem;
+    letter-spacing: 5px;
+    text-align: right;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+/* Tarjeta de Cabecera Superpuesta */
+.main-banner-card {
+    background-color: var(--card-bg);
+    padding: 35px;
+    margin-left: -60px; /* Genera la superposición de capas asimétrica */
+    position: relative;
+    z-index: 5;
+    box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.4);
+    border-left: 5px solid var(--accent-color);
+}
+
+.main-title {
+    color: var(--text-white);
+    font-size: 2.8rem;
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 15px;
+}
+
+.highlight {
+    color: var(--accent-color);
+}
+
+.subtitle-text {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   NUEVO: GRILLA MODULAR BENTO (BENEFICIOS)
+   ========================================================================== */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    z-index: 4;
+}
+
+.benefit-card {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 4px;
+    position: relative;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-3px);
+}
+
+.card-accent-line {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 3px;
+    background-color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.benefit-card:hover .card-accent-line {
+    background-color: var(--accent-color);
+}
+
+.benefit-num {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    font-family: monospace;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.benefit-card h3 {
+    color: var(--text-white);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.benefit-card p {
+    color: #92929e;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   BLOQUE INFERIOR DE ACCIÓN (BOTÓN ROJO UX)
+   ========================================================================== */
+.action-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+    margin-top: 10px;
+    z-index: 3;
+}
+
+.date-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--accent-color);
+    color: var(--text-white);
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(230, 35, 53, 0.3);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.date-box:hover {
+    transform: translateY(-2px);
+    background-color: #ff3347;
+}
+
+.time-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #a0a0ab;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.icon {
+    font-size: 1.1rem;
+}
+
+/* Grillas de Puntos Decorativos (Gradients) */
+.dots-accent {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    opacity: 0.15;
+    background-image: radial-gradient(var(--text-white) 1.5px, transparent 1.5px);
+    background-size: 8px 8px;
+    z-index: 1;
+}
+
+.top-left { top: 15px; left: 15px; }
+.bottom-center { bottom: 15px; left: 50%; transform: translateX(-50%); }
+.top-right-dots { top: -20px; right: 120px; }
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT (Ajustes para Celulares)
+   ========================================================================== */
+@media (max-width: 900px) {
+    .page-container {
+        grid-template-columns: 1fr;
+        border: 5px solid var(--panel-dark);
+    }
+    .photo-section {
+        padding: 20px;
+    }
+    .image-wrapper {
+        min-height: 300px;
+    }
+    .info-section {
+        padding: 25px;
+    }
+    .main-banner-card {
+        margin-left: 0;
+        padding: 25px;
+        margin-top: -50px;
+    }
+    .main-title {
+        font-size: 2.2rem;
+    }
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+    .action-footer {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    .date-box {
+        justify-content: center;
+    }
+    .time-box {
+        justify-content: center;
+    }
+}
+
